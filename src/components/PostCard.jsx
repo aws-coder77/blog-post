@@ -15,7 +15,6 @@ function PostCard({ $id, title, imageId = "" }) {
     }
   }, [imageId]);
 
-  console.log(imageId);
   return (
     <Link to={`/post/${$id}`}>
       <div

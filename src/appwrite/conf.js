@@ -81,11 +81,12 @@ export class Service {
     return false;
   }
 
-  async getPosts() {
+  async getPosts(userId) {
     try {
       return await this.databases.listDocuments(
         config.appwriteDatabaseId,
-        config.appwriteCollectionId
+        config.appwriteCollectionId,
+        [Query.equal("userId", `${userId}`)]
       );
     } catch (error) {
       console.log("appwrite service ---> Get All Post :: error ", error);
@@ -93,12 +94,12 @@ export class Service {
     }
     return false;
   }
-  async getHomePosts() {
+  async getHomePosts(userId) {
     try {
       return await this.databases.listDocuments(
         config.appwriteDatabaseId,
         config.appwriteCollectionId,
-        [Query.limit(10)]
+        [Query.limit(10), Query.equal("userId", `${userId}`)]
       );
     } catch (error) {
       console.log("appwrite service ---> Get All Post :: error ", error);

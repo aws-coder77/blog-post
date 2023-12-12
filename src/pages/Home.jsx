@@ -8,9 +8,13 @@ function Home() {
   const [posts, setPosts] = useState([]);
   const status = useSelector((state) => state.blogPost.userLogin);
 
+  const userId = status
+    ? useSelector((state) => state.blogPost.userData.$id)
+    : null;
+
   useEffect(() => {
     if (status) {
-      service.getHomePosts().then((post) => {
+      service.getHomePosts(userId).then((post) => {
         if (post) {
           setPosts(post.documents);
         }

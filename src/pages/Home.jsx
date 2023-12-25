@@ -23,7 +23,7 @@ function Home() {
   }, []);
   if (!status) {
     return (
-      <div className="w-full py-8 mt-4 text-center">
+      <div className="w-full py-8 mt-4 text-center ">
         <Container>
           <div className="flex flex-wrap">
             <div className="p-2 w-full">
@@ -39,7 +39,9 @@ function Home() {
 
   return (
     <div className="bg-gray-200 flex items-center justify-center mx-auto">
-      {status && posts.length == 0 && <div> You have not Posted any Blog</div>}
+      {status && posts && posts.length == 0 && (
+        <div> You have not Posted any Blog</div>
+      )}
       {posts.length && (
         <Container>
           <h1 className="text-lg">Your recent post as following</h1>

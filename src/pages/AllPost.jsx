@@ -6,7 +6,9 @@ import { useSelector } from "react-redux";
 ("re");
 function AllPost() {
   const [posts, setPosts] = useState([]);
-  const userId = useSelector((state) => state.blogPost.userData.$id);
+  const userId = useSelector(
+    (state) => state.blogPost.userData && state.blogPost.userData.$id
+  );
 
   useEffect(() => {
     service.getPosts(userId).then((post) => setPosts(post.documents));

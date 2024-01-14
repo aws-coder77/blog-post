@@ -104,12 +104,15 @@ function PostForm({ post }) {
             />
           </div>
         )}
-        <Select
-          options={["false", "true"]}
-          label="blogStatus"
-          className="mb-4"
-          {...register("blogStatus", { required: true })}
-        />
+        <label className="text-lg p-1">
+          "true" for the public the blog
+          <Select
+            options={["false", "true"]}
+            label="blogStatus"
+            className="mb-4"
+            {...register("blogStatus", { required: true })}
+          />
+        </label>
         <Button
           type="submit"
           bgColor={post ? "bg-green-500" : undefined}

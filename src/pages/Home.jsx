@@ -7,23 +7,24 @@ import { useSelector } from "react-redux";
 function Home() {
   const [posts, setPosts] = useState([]);
   const status = useSelector((state) => state.blogPost.userLogin);
-
   const userId = status
     ? useSelector((state) => state.blogPost.userData.$id)
     : null;
 
   useEffect(() => {
     if (status) {
+      console.log(userId);
       service.getHomePosts(userId).then((post) => {
-        if (post) {
+        if (post && post.documents) {
           setPosts(post.documents);
         }
       });
     }
   }, []);
+
   if (!status) {
     return (
-      <div className="w-full py-8 mt-4 text-center ">
+      <div className="w-full py-8 mt-4 text-center bottom-0 ">
         <Container>
           <div className="flex flex-wrap">
             <div className="p-2 w-full">
@@ -36,16 +37,15 @@ function Home() {
       </div>
     );
   }
-
   return (
     <div className="bg-gray-200 flex items-center justify-center mx-auto">
-      {status && posts && posts.length == 0 && (
+      {status && Array.isArray(posts) && posts.length == 0 && (
         <div> You have not Posted any Blog</div>
       )}
-      {posts.length && (
+      {Array.isArray(posts) && posts.length && (
         <Container>
           <h1 className="text-lg">Your recent post as following</h1>
-          <div className="bg-gray-200 min-h-screen grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4 mx-auto items-center justify-centerp">
+          <div className="bg-gray-200 min-h-screen grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4 mx-auto items-center justify-center">
             {posts.map((post) => (
               <div key={post.$id} className="p-2">
                 <PostCard {...post} />

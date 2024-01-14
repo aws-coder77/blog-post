@@ -60,14 +60,16 @@ function AllUserPost() {
                 key={userData.imageId}
                 className="bg-white rounded-lg shadow mx-2 p-2 max-w-sm flex items-center justify-center"
               >
-                <div key={userData.id} className="">
-                  <h2 className="text-2xl font-bold mb-4">{userData.title}</h2>
+                <div key={userData.id} className=" overflow-hidden">
+                  <h2 className="text-2xl font-bold mb-4 ">{userData.title}</h2>
                   {userData.imageId && (
-                    <img
-                      src={service.getFilePreview(userData.imageId)}
-                      alt="Card Image"
-                      className="mb-4 rounded h-72"
-                    />
+                    <div className="flex items-center justify-center">
+                      <img
+                        src={service.getFilePreview(userData.imageId)}
+                        alt="Card Image"
+                        className="mb-4 flex items-center justify-center rounded w-48 h-64 overflow-hidden"
+                      />{" "}
+                    </div>
                   )}
 
                   {userData.blogContent && (

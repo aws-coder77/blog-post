@@ -5,6 +5,7 @@ import Input from "./Input";
 import Button from "./Button";
 import { useDispatch } from "react-redux";
 import { useForm } from "react-hook-form";
+import { login } from "../features/authSlice";
 
 function Signup() {
   const navigate = useNavigate();

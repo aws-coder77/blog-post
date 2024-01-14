@@ -25,7 +25,7 @@ function EditPost() {
     <div className="w-full py-8">
       <Container>
         <div className="flex flex-wrap">
-          <PostForm post={post} className="p-2 w-1/4" />
+          <PostForm post={post} className="p-2" />
         </div>
       </Container>
     </div>

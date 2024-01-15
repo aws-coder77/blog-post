@@ -13,7 +13,6 @@ function Home() {
 
   useEffect(() => {
     if (status) {
-      console.log(userId);
       service.getHomePosts(userId).then((post) => {
         if (post && post.documents) {
           setPosts(post.documents);

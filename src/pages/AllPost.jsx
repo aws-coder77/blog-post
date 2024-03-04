@@ -16,7 +16,7 @@ function AllPost() {
   return (
     <div className="bg-gray-200 flex items-center justify-center mx-auto">
       <Container>
-        <div className="bg-gray-200 min-h-screen grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4 mx-auto items-center justify-center">
+        <div className="bg-gray-200  grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4 mx-auto items-center justify-center">
           {posts &&
             posts.length &&
             posts.map((post) => (

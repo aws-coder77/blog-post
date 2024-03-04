@@ -55,6 +55,7 @@ function Signup() {
         <form onSubmit={handleSubmit(create)}>
           <div className="space-y-5">
             <Input
+              className="mx-2 text-md"
               label="Full Name: "
               placeholder="Enter your full name"
               {...register("name", {
@@ -70,6 +71,7 @@ function Signup() {
               label="Email: "
               placeholder="Enter your email"
               type="email"
+              className="mx-11 text-md"
               {...register("email", {
                 required: "Email is required",
                 validate: {
@@ -88,6 +90,7 @@ function Signup() {
               label="Password: "
               type="password"
               placeholder="Enter your password"
+              className="mx-4 text-md"
               {...register("password", {
                 required: "passwrod is required",
                 minLength: {

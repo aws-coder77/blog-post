@@ -12,10 +12,16 @@ function Home() {
     : null;
 
   useEffect(() => {
+    function handleTitle(eachPost) {
+      if (eachPost.title.length > 15) {
+        eachPost.title = eachPost.title.substring(0, 12) + "...";
+      }
+      return eachPost;
+    }
     if (status) {
       service.getHomePosts(userId).then((post) => {
-        if (post && post.documents) {
-          setPosts(post.documents);
+        if (post && post.documents && Array.isArray(post.documents)) {
+          setPosts(post.documents.map(handleTitle));
         }
       });
     }
@@ -27,9 +33,7 @@ function Home() {
         <Container>
           <div className="flex flex-wrap">
             <div className="p-2 w-full">
-              <h1 className="text-2xl font-bold hover:text-gray-500">
-                Login to read posts
-              </h1>
+              <h1 className="text-2xl font-bold ">Login to see posts</h1>
             </div>
           </div>
         </Container>
@@ -39,12 +43,15 @@ function Home() {
   return (
     <div className="bg-gray-200 flex items-center justify-center mx-auto">
       {status && Array.isArray(posts) && posts.length == 0 && (
-        <div> You have not Posted any Blog</div>
+        <div className=" flex items-center justify-center text-lg">
+          You have not Posted any Blog
+        </div>
       )}
+      &nbsp;
       {Array.isArray(posts) && posts.length && (
         <Container>
           <h1 className="text-lg">Your recent post as following</h1>
-          <div className="bg-gray-200 min-h-screen grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4 mx-auto items-center justify-center">
+          <div className="bg-gray-200 grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4 mx-auto items-center justify-center">
             {posts.map((post) => (
               <div key={post.$id} className="p-2">
                 <PostCard {...post} />

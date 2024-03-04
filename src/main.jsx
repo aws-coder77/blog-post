@@ -7,9 +7,9 @@ import store from "./store/store.js";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import Home from "./pages/Home.jsx";
 import Protected from "./components/AuthLayout.jsx";
-import Login from "./components/Login.jsx";
+import LoginPage from "./pages/LoginPage.jsx";
 import AddPost from "./pages/AddPost.jsx";
-import SignupPage from "./pages/Signup.jsx";
+import SignupPage from "./pages/SignupPage.jsx";
 import EditPost from "./pages/EditPost.jsx";
 import Post from "./pages/Post.jsx";
 import AllPost from "./pages/AllPost.jsx";
@@ -28,7 +28,7 @@ const router = createBrowserRouter([
         path: "/login",
         element: (
           <Protected authentication={false}>
-            <Login />
+            <LoginPage />
           </Protected>
         ),
       },

@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 
 function PostCard({ $id, title, imageId = "" }) {
   const [imageURL, setImageURL] = useState(null);
+
   useEffect(() => {
     if (imageId) {
       try {

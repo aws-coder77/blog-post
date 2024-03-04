@@ -22,7 +22,7 @@ function Login() {
     try {
       const session = await authService.login({ ...data });
       if (session) {
-        const userData = await authService.getCurrentUser();;
+        const userData = await authService.getCurrentUser();
         if (userData) {
           dispatch(authLogin(userData));
           navigatie("/");
@@ -58,6 +58,7 @@ function Login() {
               label="Email: "
               placeholder="Enter your email"
               type="email"
+              className=" mx-10 text-md"
               {...register("email", {
                 required: "Email is Required ",
                 validate: {
@@ -72,6 +73,7 @@ function Login() {
               label="Password: "
               type="password"
               placeholder="Enter your password"
+              className="mx-2 text-md"
               {...register("password", {
                 required: "Passwrod is Required",
                 minLength: {

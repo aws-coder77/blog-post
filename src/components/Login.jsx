@@ -53,35 +53,39 @@ function Login() {
         </p>
         {error && <p className="text-red-600 mt-8 text-center">{error}</p>}
         <form onSubmit={handleSubmit(login)} className="mt-8">
-          <div className="space-y-5">
-            <Input
-              label="Email: "
-              placeholder="Enter your email"
-              type="email"
-              className=" mx-10 text-md"
-              {...register("email", {
-                required: "Email is Required ",
-                validate: {
-                  matchPatern: (value) =>
-                    /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(value) ||
-                    "Email address must be a valid address",
-                },
-              })}
-            />
-
-            <Input
-              label="Password: "
-              type="password"
-              placeholder="Enter your password"
-              className="mx-2 text-md"
-              {...register("password", {
-                required: "Passwrod is Required",
-                minLength: {
-                  value: 8,
-                  message: "Password must be at least 8 characters",
-                },
-              })}
-            />
+          <div className="space-y-5 w-full flex flex-col items-center justify-center">
+            <label className="block md:flex ">
+              Email:
+              <Input
+                placeholder="Enter your email"
+                type="email"
+                className="md:ml-10 text-md"
+                {...register("email", {
+                  required: "Email is Required ",
+                  validate: {
+                    matchPatern: (value) =>
+                      /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(
+                        value
+                      ) || "Email address must be a valid address",
+                  },
+                })}
+              />
+            </label>
+            <label className="block  md:flex ">
+              Password:
+              <Input
+                type="password"
+                placeholder="Enter your password"
+                className="md:ml-2 text-md"
+                {...register("password", {
+                  required: "Passwrod is Required",
+                  minLength: {
+                    value: 8,
+                    message: "Password must be at least 8 characters",
+                  },
+                })}
+              />
+            </label>
             {errors.password && (
               <p className=" bg-red-400 rounded-md p-1 ">
                 {errors.password.message}

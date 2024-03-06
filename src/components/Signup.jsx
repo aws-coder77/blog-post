@@ -53,52 +53,59 @@ function Signup() {
         {error && <p className="text-red-600 mt-8 text-center">{error}</p>}
 
         <form onSubmit={handleSubmit(create)}>
-          <div className="space-y-5">
-            <Input
-              className="mx-2 text-md"
-              label="Full Name: "
-              placeholder="Enter your full name"
-              {...register("name", {
-                required: "Name is required",
-              })}
-            />
+          <div className="space-y-5 inline-block md:flex md:flex-col md:items-center md:justify-center  w-full ">
+            <label className="mx-5 block md:flex text-md items-center md:whitespace-nowrap md:overflow-hidden">
+              Full Name:
+              <Input
+                className="md:mx-2 text-md"
+                placeholder="Enter your full name"
+                {...register("name", {
+                  required: "Name is required",
+                })}
+              />
+            </label>
             {errors.name && (
               <p className=" bg-red-400 rounded-md p-1 ">
                 {errors.name.message}
               </p>
             )}
-            <Input
-              label="Email: "
-              placeholder="Enter your email"
-              type="email"
-              className="mx-11 text-md"
-              {...register("email", {
-                required: "Email is required",
-                validate: {
-                  matchPatern: (value) =>
-                    /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(value) ||
-                    "Email address must be a valid address",
-                },
-              })}
-            />
+            <label className="md:flex block mx-5 md:items-center">
+              Email:
+              <Input
+                placeholder="Enter your email"
+                type="email"
+                className="md:ml-7 mr-1 flex py-1 text-md"
+                {...register("email", {
+                  required: "Email is required",
+                  validate: {
+                    matchPatern: (value) =>
+                      /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(
+                        value
+                      ) || "Email address must be a valid address",
+                  },
+                })}
+              />
+            </label>
             {errors.email && (
               <p className=" bg-red-400 rounded-md p-1 ">
                 {errors.email.message}
               </p>
             )}
-            <Input
-              label="Password: "
-              type="password"
-              placeholder="Enter your password"
-              className="mx-4 text-md"
-              {...register("password", {
-                required: "passwrod is required",
-                minLength: {
-                  value: 8,
-                  message: "password must be 8 character",
-                },
-              })}
-            />
+            <label className="md:flex block mx-5 md:items-center">
+              Password:
+              <Input
+                type="password"
+                placeholder="Enter your password"
+                className="md:mx-4 text-md"
+                {...register("password", {
+                  required: "passwrod is required",
+                  minLength: {
+                    value: 8,
+                    message: "password must be 8 character",
+                  },
+                })}
+              />
+            </label>
             {errors.password && (
               <p className=" bg-red-400 rounded-md p-1 ">
                 {errors.password.message}

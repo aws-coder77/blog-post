@@ -51,9 +51,9 @@ function Home() {
       {Array.isArray(posts) && posts.length && (
         <Container>
           <h1 className="text-lg">Your recent post as following</h1>
-          <div className="bg-gray-200 grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4 mx-auto items-center justify-center">
+          <div className="bg-gray-200 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-1 mx-auto items-center justify-center">
             {posts.map((post) => (
-              <div key={post.$id} className="p-2">
+              <div key={post.$id} className="p-1">
                 <PostCard {...post} />
               </div>
             ))}

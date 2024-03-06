@@ -63,7 +63,7 @@ function Header() {
     <header className=" py-3 shadow bg-slate-900 text-slate-100">
       <Container>
         <nav className="flex">
-          <div className="flex items-center justify-end w-3/5 md:w-full">
+          <div className="flex items-center justify-end w-4/5 md:w-full">
             <ul
               className={` ${isMenuHidden} bg-black rounded-2xl text-white block md:flex ml-auto`}
             >
@@ -87,7 +87,7 @@ function Header() {
               )}
             </ul>
           </div>
-          <div className="flex md:hidden justify-start px-5 py-3 w-2/3 md:w-full">
+          <div className="flex md:hidden justify-end px-5 py-3 w-1/5 md:w-full">
             <IoMenu
               onClick={handleMenu}
               size={30}

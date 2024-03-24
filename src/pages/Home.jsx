@@ -6,26 +6,28 @@ import { useSelector } from "react-redux";
 
 function Home() {
   const [posts, setPosts] = useState([]);
-  const status = useSelector((state) => state.blogPost.userLogin);
-  const userId = status
-    ? useSelector((state) => state.blogPost.userData.$id)
-    : null;
-
+  const dataValue = useSelector((state) => state.blogPost);
+  let userId, status;
+  if (dataValue.userLogin) {
+    status = dataValue.userLogin;
+    userId = dataValue.userData.$id;
+  }
   useEffect(() => {
-    function handleTitle(eachPost) {
-      if (eachPost.title.length > 15) {
-        eachPost.title = eachPost.title.substring(0, 12) + "...";
-      }
-      return eachPost;
-    }
     if (status) {
-      service.getHomePosts(userId).then((post) => {
-        if (post && post.documents && Array.isArray(post.documents)) {
-          setPosts(post.documents.map(handleTitle));
+      async function getData() {
+        try {
+          await service.getHomePosts(userId).then((post) => {
+            if (post && post.documents) {
+              setPosts([...post.documents]);
+            }
+          });
+        } catch (error) {
+          console.log(error);
         }
-      });
+      }
+      getData();
     }
-  }, []);
+  }, [status]);
 
   if (!status) {
     return (
@@ -48,7 +50,8 @@ function Home() {
         </div>
       )}
       &nbsp;
-      {Array.isArray(posts) && posts.length && (
+      {Array.isArray(posts)}
+      {
         <Container>
           <h1 className="text-lg">Your recent post as following</h1>
           <div className="bg-gray-200 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-1 mx-auto items-center justify-center">
@@ -59,7 +62,7 @@ function Home() {
             ))}
           </div>
         </Container>
-      )}
+      }
     </div>
   );
 }

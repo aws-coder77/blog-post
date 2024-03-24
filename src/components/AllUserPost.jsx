@@ -50,6 +50,14 @@ function AllUserPost() {
     };
   }, []);
 
+  const handleBlogContent = (node, index) => {
+    console.log(node.type);
+    if (node.type == "tag" && node.children[0].data.length > 33) {
+      node.children[0].data.length =
+        node.children[0].data.substring(0, 30) + "...";
+    }
+  };
+
   return (
     <div className="bg-gray-200 flex items-center justify-center mx-auto">
       <Container>
@@ -61,7 +69,14 @@ function AllUserPost() {
                 className="bg-white rounded-lg shadow mx-2 p-2 max-w-sm flex items-center justify-center"
               >
                 <div key={userData.id} className=" overflow-hidden">
-                  <h2 className="text-2xl font-bold mb-4 ">{userData.title}</h2>
+                  <h2 className="text-2xl font-bold mb-4 ">
+                    {(() => {
+                      if (userData.title.length > 15) {
+                        return userData.title.substring(0, 12) + "...";
+                      }
+                      return userData.title;
+                    })()}
+                  </h2>
                   {userData.imageId && (
                     <div className="flex items-center justify-center">
                       <img
@@ -74,7 +89,7 @@ function AllUserPost() {
 
                   {userData.blogContent && (
                     <div className="browser-css">
-                      {parse(userData.blogContent)}
+                      {parse(userData.blogContent, { handleBlogContent })}
                     </div>
                   )}
                 </div>

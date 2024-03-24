@@ -8,7 +8,6 @@ function Logout() {
   const logoutHandler = () => {
     authService.logout().then(() => {
       dispatch(logout());
-      
     });
   };
   return (

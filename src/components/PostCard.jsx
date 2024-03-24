@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 
 function PostCard({ $id, title, imageId = "" }) {
   const [imageURL, setImageURL] = useState(null);
-  console.log(title);
   if (title.length > 15) {
     title = title.substring(0, 12) + "...";
   }

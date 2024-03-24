@@ -3,12 +3,14 @@ import service from "../appwrite/conf";
 import Container from "./container/Container";
 import authService from "../appwrite/auth";
 import parse from "html-react-parser";
+import { useNavigate } from "react-router-dom";
 
 function AllUserPost() {
   const [allUserData, setAllUserData] = useState([]);
   const [curser, setCurser] = useState(null);
   const [loading, setLoading] = useState(false);
   const [errors, setErrors] = useState(null);
+  const navigate = useNavigate();
 
   const fetchData = async () => {
     setErrors(null);
@@ -50,14 +52,6 @@ function AllUserPost() {
     };
   }, []);
 
-  const handleBlogContent = (node, index) => {
-    console.log(node.type);
-    if (node.type == "tag" && node.children[0].data.length > 33) {
-      node.children[0].data.length =
-        node.children[0].data.substring(0, 30) + "...";
-    }
-  };
-
   return (
     <div className="bg-gray-200 flex items-center justify-center mx-auto">
       <Container>
@@ -66,7 +60,10 @@ function AllUserPost() {
             allUserData.map((userData) => (
               <div
                 key={userData.imageId}
-                className="bg-white rounded-lg shadow mx-2 p-2 max-w-sm flex items-center justify-center"
+                className="bg-white rounded-lg shadow mx-2 p-2 max-w-sm flex items-center cursor-pointer justify-center"
+                onClick={() => {
+                  navigate(`/all-user-post/${userData.$id}`);
+                }}
               >
                 <div key={userData.id} className=" overflow-hidden">
                   <h2 className="text-2xl font-bold mb-4 ">
@@ -84,12 +81,6 @@ function AllUserPost() {
                         alt="Card Image"
                         className="mb-4 flex items-center justify-center rounded w-48 h-64 overflow-hidden"
                       />{" "}
-                    </div>
-                  )}
-
-                  {userData.blogContent && (
-                    <div className="browser-css">
-                      {parse(userData.blogContent, { handleBlogContent })}
                     </div>
                   )}
                 </div>

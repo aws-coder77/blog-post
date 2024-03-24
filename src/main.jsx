@@ -14,6 +14,7 @@ import EditPost from "./pages/EditPost.jsx";
 import Post from "./pages/Post.jsx";
 import AllPost from "./pages/AllPost.jsx";
 import UserBlog from "./pages/UserBlog.jsx";
+import Blogcontent from "./pages/Blogcontent.jsx";
 
 const router = createBrowserRouter([
   {
@@ -73,6 +74,14 @@ const router = createBrowserRouter([
         element: (
           <Protected authentication>
             <UserBlog />
+          </Protected>
+        ),
+      },
+      {
+        path: "/all-user-post/:id",
+        element: (
+          <Protected authentication>
+            <Blogcontent />
           </Protected>
         ),
       },

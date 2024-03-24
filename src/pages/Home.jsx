@@ -50,8 +50,7 @@ function Home() {
         </div>
       )}
       &nbsp;
-      {Array.isArray(posts)}
-      {
+      {posts && posts.length > 0 && Array.isArray(posts) && (
         <Container>
           <h1 className="text-lg">Your recent post as following</h1>
           <div className="bg-gray-200 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-1 mx-auto items-center justify-center">
@@ -62,7 +61,7 @@ function Home() {
             ))}
           </div>
         </Container>
-      }
+      )}
     </div>
   );
 }

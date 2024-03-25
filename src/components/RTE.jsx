@@ -13,7 +13,7 @@ export default function RTE({ name, control, label, defaultValue = "" }) {
         control={control}
         render={({ field: { onChange, value } }) => (
           <Editor
-            apiKey={config.tyniMCE_ApiKey}
+            apiKey="qqwblfhp19gmhb2lmtbsv9forah8j5kagq068110p3vqkf68"
             initialValue={defaultValue}
             init={{
               initialValue: defaultValue,

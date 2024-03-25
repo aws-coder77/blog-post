@@ -9,7 +9,6 @@ function Blog({ id }) {
       if (post) setBlogData(post);
     });
   }, [id]);
-  console.log(blogData);
   return (
     <div className="md:flex m-4 gap-2">
       <div>

@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom";
 function Blogcontent() {
   const { id } = useParams();
   return (
-    <div>
+    <div className="flex items-center justify-center">
       <Blog id={id} />
     </div>
   );

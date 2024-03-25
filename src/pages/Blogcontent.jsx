@@ -5,7 +5,6 @@ function Blogcontent() {
   const { id } = useParams();
   return (
     <div>
-      BlogContent my name is chandan kumar
       <Blog id={id} />
     </div>
   );

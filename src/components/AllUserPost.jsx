@@ -17,9 +17,9 @@ function AllUserPost() {
     try {
       setLoading(true);
       const response = await service.getUserPost(curser);
-      const datresponse = response.documents;
+      const dataResponse = response.documents;
       if (response.documents.length > 0) {
-        setAllUserData([...allUserData, ...datresponse]);
+        setAllUserData([...allUserData, ...dataResponse]);
         const lastId = response.documents[response.documents.length - 1].$id;
         setCurser(lastId);
       } else {

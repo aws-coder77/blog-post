@@ -42,7 +42,7 @@ function Signup() {
           Sign up to create account
         </h2>
         <p className="mt-2 text-center text-base pb-2 text-black/60">
-          If you have allready account
+          If you have already account
           <Link
             to="/login"
             className="font-medium text-primary text-black transition-all duration-200 hover:underline mx-1"
